@@ -1,16 +1,8 @@
 package com.yoyling.util.quartz;
 
-import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
-import org.quartz.JobBuilder;
-import org.quartz.JobDataMap;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
 import com.yoyling.entity.ScheduleJob;
+import org.quartz.*;
+
 
 /**
  * @Description: 定时任务操作工具类
@@ -50,7 +42,7 @@ public class ScheduleUtils {
 	public static void createScheduleJob(Scheduler scheduler, ScheduleJob scheduleJob) {
 		try {
 			//构建job信息
-			JobDetail jobDetail = JobBuilder.newJob(ScheduleJob.class).withIdentity(getJobKey(scheduleJob.getJobId())).build();
+			JobDetail jobDetail = JobBuilder.newJob(com.yoyling.util.quartz.ScheduleJob.class).withIdentity(getJobKey(scheduleJob.getJobId())).build();
 			//表达式调度构建器
 			CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(scheduleJob.getCron()).withMisfireHandlingInstructionDoNothing();
 			//按新的cronExpression表达式构建一个新的trigger
