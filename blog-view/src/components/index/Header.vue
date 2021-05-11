@@ -6,8 +6,7 @@
 			<!-- <div class="bg2" style="background-image: url('https://cdn.jsdelivr.net/gh/yoyling/JsDelivr/bg/bg-02.jpg');"></div> -->
 			<!-- <div class="bg3" style="background-image: url('https://cdn.jsdelivr.net/gh/yoyling/JsDelivr/bg/bg-03.jpg');" v-show="loaded"></div> -->
 		</div>
-		<div class="text-malfunction">{{blogName}}
-			<span class="caret"></span>
+		<div class="text-malfunction">{{blogName}}<span class="caret"></span>
 		</div>
 		<div class="wrapper">
 			<i class="ali-iconfont icon-down" @click="scrollToMain"></i>
@@ -148,6 +147,7 @@
 		height: 37px;
 		background-color: #fff;
 		margin-left: 5px;
+		margin-bottom: -2px;
 		animation-duration: 2s;
 		animation-fill-mode: both;
 		animation-iteration-count: infinite;

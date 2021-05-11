@@ -321,7 +321,7 @@ public class CommentController {
 	private void setCommentRandomAvatar(Comment comment) {
 		//设置随机头像
 		long nicknameHash = HashUtils.getMurmurHash32(comment.getNickname());//根据评论昵称取Hash，保证每一个昵称对应一个头像
-		long num = nicknameHash % 6 + 1;//计算对应的头像
+		long num = nicknameHash % 2 + 1;//计算对应的头像
 		String avatar = "/img/comment-avatar/" + num + ".jpg";
 		comment.setAvatar(avatar);
 	}
