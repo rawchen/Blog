@@ -301,3 +301,8 @@ footer {
     background-color: black;
     color: white;
 }
+
+.ui.comments .comment .text img {
+    width: 25px;
+    vertical-align: bottom;
+}
