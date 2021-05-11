@@ -319,10 +319,9 @@ public class CommentController {
 	 * @param comment 评论DTO
 	 */
 	private void setCommentRandomAvatar(Comment comment) {
-		//set 随机头像
-		String nicknameMd5 = EncryptUtils.getMd5(comment.getNickname());//根据评论昵称取MD5，保证每一个昵称对应一个头像
-		char m = nicknameMd5.charAt(nicknameMd5.length() - 1);//取MD5最后一位
-		int num = m % 6 + 1;//计算对应的头像
+		//设置随机头像
+		long nicknameHash = HashUtils.getMurmurHash32(comment.getNickname());//根据评论昵称取Hash，保证每一个昵称对应一个头像
+		long num = nicknameHash % 6 + 1;//计算对应的头像
 		String avatar = "/img/comment-avatar/" + num + ".jpg";
 		comment.setAvatar(avatar);
 	}

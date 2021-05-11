@@ -3,7 +3,7 @@ package com.yoyling.service.impl;
 import com.yoyling.entity.User;
 import com.yoyling.mapper.UserMapper;
 import com.yoyling.service.UserService;
-import com.yoyling.util.EncryptUtils;
+import com.yoyling.util.HashUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("用户不存在");
 		}
-		if (!EncryptUtils.matchBC(password, user.getPassword())) {
+		if (!HashUtils.matchBC(password, user.getPassword())) {
 			throw new UsernameNotFoundException("密码错误");
 		}
 		return user;
