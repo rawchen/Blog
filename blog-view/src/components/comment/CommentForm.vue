@@ -9,7 +9,7 @@
 			<el-input :class="'textarea'" type="textarea" :rows="5" v-model="commentForm.content" placeholder="评论千万条，友善第一条"
 			          maxlength="250" show-word-limit :validate-event="false"></el-input>
 			<div class="el-form-item el-form-item--small emoji">
-				<img src="https://cdn.jsdelivr.net/gh/Naccl/blog-resource/img/paopao/1.png" @click="showEmojiBox">
+				<img src="https://cdn.jsdelivr.net/gh/yoyling/JsDelivr/emoji/paopao/1.png" @click="showEmojiBox">
 				<div class="mask" v-show="emojiShow" @click="hideEmojiBox"></div>
 				<div class="emoji-box" v-show="emojiShow">
 					<div class="emoji-title">
