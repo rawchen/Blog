@@ -232,7 +232,6 @@ public class BlogServiceImpl implements BlogService {
 			} else {
 				randomBlog.setPrivacy(false);
 			}
-			randomBlog.setTags(tagService.getTagListByBlogId(randomBlog.getId()));
 		}
 		return randomBlogs;
 	}
