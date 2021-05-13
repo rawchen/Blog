@@ -2,6 +2,7 @@ package com.yoyling.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.yoyling.annotation.AccessLimit;
 import com.yoyling.entity.User;
 import com.yoyling.model.dto.Comment;
 import com.yoyling.model.vo.FriendInfo;
@@ -145,12 +146,14 @@ public class CommentController {
 
 	/**
 	 * 提交评论 又长又臭 能用就不改了:)
+	 * 单个ip，30秒内允许提交1次评论
 	 *
 	 * @param comment 评论DTO
 	 * @param request 获取ip
 	 * @param jwt     博主身份Token
 	 * @return
 	 */
+	@AccessLimit(seconds = 30, maxCount = 1, msg = "30秒内只能提交一次评论")
 	@PostMapping("/comment")
 	public Result postComment(@RequestBody Comment comment,
 	                          HttpServletRequest request,
