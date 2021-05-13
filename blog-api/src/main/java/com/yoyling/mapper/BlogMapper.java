@@ -28,7 +28,7 @@ public interface BlogMapper {
 
 	List<Blog> getIdAndTitleList();
 
-	List<NewBlog> getNewBlogListByIsPublishedAndIsRecommend();
+	List<NewBlog> getNewBlogListByIsPublished();
 
 	List<BlogInfo> getBlogInfoListByIsPublished();
 
@@ -40,7 +40,7 @@ public interface BlogMapper {
 
 	List<ArchiveBlog> getArchiveBlogListByYearMonthAndIsPublished(String yearMonth);
 
-	List<RandomBlog> getRandomBlogListByLimitNumAndIsPublished(Integer limitNum);
+	List<RandomBlog> getRandomBlogListByLimitNumAndIsPublishedAndIsRecommend(Integer limitNum);
 
 	List<BlogView> getBlogViewsList();
 
