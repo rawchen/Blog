@@ -378,7 +378,7 @@ public class CommentController {
 	 * @param parentComment 父评论
 	 * @param comment       当前评论
 	 */
-	private void sendMailToParentComment(top.naccl.entity.Comment parentComment, Comment comment) {
+	private void sendMailToParentComment(com.yoyling.entity.Comment parentComment, Comment comment) {
 		String path = "";
 		String title = "";
 		if (comment.getPage() == 0) {
