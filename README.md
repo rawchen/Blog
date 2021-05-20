@@ -1,6 +1,6 @@
 <p align="center">
 	<a href="" target="_blank">
-		<img src="https://i.loli.net/2021/05/09/rp7KPhZvycWx2qt.gif" alt="Blog · Logo" style="width: 200px; height: 200px">
+		<img src="https://cdn.jsdelivr.net/gh/rawchen/JsDelivr/static/blog/favicon-gif.gif" alt="Blog · Logo" style="width: 200px; height: 200px">
 	</a>
 </p>
 <p align="center">
