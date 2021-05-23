@@ -1,6 +1,7 @@
 package com.rawchen.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.rawchen.annotation.AccessLimit;
 import com.rawchen.annotation.VisitLogger;
 import com.rawchen.entity.Moment;
 import com.rawchen.entity.User;
@@ -10,11 +11,7 @@ import com.rawchen.service.MomentService;
 import com.rawchen.service.impl.UserServiceImpl;
 import com.rawchen.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description: 动态
@@ -60,10 +57,12 @@ public class MomentController {
 
 	/**
 	 * 给动态点赞
+	 * 简单限制一下点赞
 	 *
 	 * @param id 动态id
 	 * @return
 	 */
+	@AccessLimit(seconds = 86400, maxCount = 1, msg = "不可以重复点赞哦")
 	@VisitLogger(behavior = "点赞动态")
 	@PostMapping("/moment/like")
 	public Result like(@RequestParam Long id) {
