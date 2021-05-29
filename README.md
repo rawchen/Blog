@@ -15,13 +15,13 @@
 
 ## 简介
 
-本着『前后端分离，人不分离』的要领，开发了此基于 Spring Boot + Vue 前后端分离博客系统
+前后端分离Blog系统，基于 Spring Boot + Vue 前后端分离博客系统
+
+自用博客，长期维护，欢迎勘误。此项目本是学习过程中的产物，参考了许多优秀的教程和项目。
 
 
-> [https://yoyling.com](https://yoyling.com)
-> [https://admin.yoyling.com](https://admin.yoyling.com)
-
-
+> [https://b.rawchen.com](https://rawchen.com)
+> [https://admin.rawchen.com](https://admin.rawchen.com)
 
 ## 后端
 
@@ -108,10 +108,7 @@ JS 依赖及参考的 css：[axios](https://github.com/axios/axios)、[moment](h
 
 
 
-## And...
+## 项目截图
 
-由于一些技术是现学现用的，难免有些考虑不周，望大佬们能够指出错误
 
-自用博客，长期维护，欢迎勘误
 
-此项目本是学习过程中的产物，参考了许多优秀的教程和项目，由于比较零散，难以统计，如大佬能看到此，请及时与我联系，以便表示感谢
