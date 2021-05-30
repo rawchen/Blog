@@ -8,8 +8,11 @@
 	<img src="https://img.shields.io/badge/SpringBoot-2.2.7.RELEASE-brightgreen">
 	<img src="https://img.shields.io/badge/MyBatis-3.5.5-red">
 	<img src="https://img.shields.io/badge/Vue-2.6.11-brightgreen">
-	<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoyling%2FBlog&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false">
+    <img src="https://img.shields.io/badge/Redis-3.2.100-brightgreen">
+	<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Frawchen%2FBlog&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false">
 </p>
+
+
 
 
 
