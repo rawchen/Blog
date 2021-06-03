@@ -23,7 +23,8 @@
 自用博客，长期维护，欢迎勘误。此项目本是学习过程中的产物，参考了许多优秀的教程和项目。
 
 
-> [https://b.rawchen.com](https://rawchen.com)
+> [https://blog.rawchen.com](https://blog.rawchen.com)
+>
 > [https://admin.rawchen.com](https://admin.rawchen.com)
 
 ## 后端
