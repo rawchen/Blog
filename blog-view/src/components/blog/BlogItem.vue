@@ -19,13 +19,10 @@
 								<i class="small calendar icon"></i><span>{{ item.createTime | dateFormat('YYYY-MM-DD')}}</span>
 							</div>
 							<div class="item m-views">
-								<i class="small eye icon"></i><span>{{ item.views }}</span>
+								<i class="el-icon-s-data"></i><span>{{ item.views }}</span>
 							</div>
-							<div class="item m-common-black">
-								<i class="small pencil alternate icon"></i><span>字数≈{{ item.words }}字</span>
-							</div>
-							<div class="item m-common-black">
-								<i class="small clock icon"></i><span>阅读时长≈{{ item.readTime }}分</span>
+							<div class="item m-common-gray">
+								<i class="el-icon-s-comment"></i><span>123</span>
 							</div>
 						</div>
 					</div>

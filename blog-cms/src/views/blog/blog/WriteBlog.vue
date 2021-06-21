@@ -6,24 +6,24 @@
 		<el-form :model="form" :rules="formRules" ref="formRef" label-position="top">
 			<el-row :gutter="20">
 				<el-col :span="12">
-					<el-form-item label="文章标题" prop="title">
+					<el-form-item label="标题" prop="title">
 						<el-input v-model="form.title" placeholder="请输入标题"></el-input>
 					</el-form-item>
 				</el-col>
 				<el-col :span="12">
-					<el-form-item label="文章首图" prop="firstPicture">
+					<el-form-item label="封面图" prop="firstPicture">
 						<el-input v-model="form.firstPicture" placeholder="文章首图，用于随机文章展示"></el-input>
 					</el-form-item>
 				</el-col>
 			</el-row>
 
-			<el-alert title="注意：如果从 Typora 中复制 Markdown，粘贴时要选择粘贴为纯文本，否则代码块可能无法被 prismjs 高亮" type="warning" center show-icon></el-alert>
+			<!-- <el-alert title="注意：如果从 Typora 中复制 Markdown，粘贴时要选择粘贴为纯文本，否则代码块可能无法被 prismjs 高亮" type="warning" center show-icon></el-alert> -->
 
-			<el-form-item label="文章描述" prop="description">
+			<el-form-item label="描述" prop="description">
 				<div id="vditor-description"></div>
 			</el-form-item>
 
-			<el-form-item label="文章正文" prop="content">
+			<el-form-item label="正文" prop="content">
 				<div id="vditor-content"></div>
 			</el-form-item>
 
@@ -44,21 +44,8 @@
 				</el-col>
 			</el-row>
 
-			<el-row :gutter="20">
-				<el-col :span="12">
-					<el-form-item label="字数" prop="words">
-						<el-input v-model="form.words" placeholder="请输入文章字数（自动计算阅读时长）" type="number"></el-input>
-					</el-form-item>
-				</el-col>
-				<el-col :span="12">
-					<el-form-item label="阅读时长(分钟)" prop="readTime">
-						<el-input v-model="form.readTime" placeholder="请输入阅读时长（可选）默认 Math.round(字数 / 200)" type="number"></el-input>
-					</el-form-item>
-				</el-col>
-			</el-row>
-
 			<el-form-item label="浏览次数" prop="views">
-				<el-input v-model="form.views" placeholder="请输入文章字数（可选）默认为 0" type="number" style="width: 50%;"></el-input>
+				<el-input v-model="form.views" placeholder="文章访问量（默认为 0）" type="number" style="width: 50%;"></el-input>
 			</el-form-item>
 
 			<el-form-item style="text-align: right;">
@@ -144,15 +131,9 @@
 					title: [{required: true, message: '请输入标题', trigger: 'change'}],
 					firstPicture: [{required: true, message: '请输入首图链接', trigger: 'change'}],
 					cate: [{required: true, message: '请选择分类', trigger: 'change'}],
-					tagList: [{required: true, message: '请选择标签', trigger: 'change'}],
-					words: [{required: true, message: '请输入文章字数', trigger: 'change'}],
+					// tagList: [{required: true, message: '请选择标签', trigger: 'change'}],
 				},
 			}
-		},
-		watch: {
-			'form.words'(newValue) {
-				this.form.readTime = newValue ? Math.round(newValue / 200) : null
-			},
 		},
 		created() {
 			this.getData()

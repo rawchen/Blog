@@ -17,20 +17,17 @@
 								<i class="small calendar icon"></i><span>{{ blog.createTime | dateFormat('YYYY-MM-DD') }}</span>
 							</div>
 							<div class="item m-views">
-								<i class="small eye icon"></i><span>{{ blog.views }}</span>
+								<i class="el-icon-s-data"></i><span>{{ blog.views }}</span>
 							</div>
-							<div class="item m-common-black">
-								<i class="small pencil alternate icon"></i><span>字数≈{{ blog.words }}字</span>
+							<div class="item m-common-gray">
+								<i class="el-icon-s-comment"></i><span>123</span>
 							</div>
-							<div class="item m-common-black">
-								<i class="small clock icon"></i><span>阅读时长≈{{ blog.readTime }}分</span>
-							</div>
-							<a class="item m-common-black" @click.prevent="bigFontSize=!bigFontSize">
+							<a class="item m-common-gray" @click.prevent="bigFontSize=!bigFontSize">
 								<div data-inverted="" data-tooltip="点击切换字体大小" data-position="top center">
 									<i class="font icon"></i>
 								</div>
 							</a>
-							<a class="item m-common-black" @click.prevent="changeFocusMode">
+							<a class="item m-common-gray" @click.prevent="changeFocusMode">
 								<div data-inverted="" data-tooltip="专注模式" data-position="top center">
 									<i class="book icon"></i>
 								</div>

@@ -245,7 +245,7 @@ footer {
 }
 
 .m-datetime {
-    color: #00a7e0 !important;
+    color: #5f5f5f !important;
 }
 
 .m-datetime * {
@@ -257,7 +257,7 @@ footer {
 }
 
 .m-views {
-    color: #ff3f1f !important;
+    color: #5f5f5f !important;
 }
 
 .m-views * {
@@ -268,19 +268,19 @@ footer {
     margin-right: 3px !important;
 }
 
-.m-common-black {
-    color: #000 !important;
+.m-common-gray {
+    color: #5f5f5f !important;
 }
 
-.m-common-black * {
+.m-common-gray * {
     vertical-align: middle !important;
 }
 
-.m-common-black * * {
+.m-common-gray * * {
     vertical-align: middle !important;
 }
 
-.m-common-black i {
+.m-common-gray i {
     margin-right: 3px !important;
 }
 

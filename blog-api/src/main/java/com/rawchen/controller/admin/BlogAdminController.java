@@ -188,8 +188,7 @@ public class BlogAdminController {
 	 */
 	private Result getResult(com.rawchen.model.dto.Blog blog, String type) {
 		//验证普通字段
-		if (StringUtils.isEmpty(blog.getTitle(),blog.getFirstPicture(), blog.getContent(), blog.getDescription())
-				|| blog.getWords() == null || blog.getWords() < 0) {
+		if (StringUtils.isEmpty(blog.getTitle(),blog.getFirstPicture(), blog.getContent(), blog.getDescription())) {
 			return Result.error("参数有误");
 		}
 
@@ -238,9 +237,7 @@ public class BlogAdminController {
 		}
 
 		Date date = new Date();
-		if (blog.getReadTime() == null || blog.getReadTime() < 0) {
-			blog.setReadTime((int) Math.round(blog.getWords() / 200.0));//粗略计算阅读时长
-		}
+
 		if (blog.getViews() == null || blog.getViews() < 0) {
 			blog.setViews(0);
 		}

@@ -29,8 +29,6 @@ public class BlogDetail {
 	private Date createTime;//创建时间
 	private Date updateTime;//更新时间
 	private Integer views;//浏览次数
-	private Integer words;//文章字数
-	private Integer readTime;//阅读时长(分钟)
 	private String password;//密码保护
 
 	private Category category;//文章分类

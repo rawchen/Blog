@@ -16,8 +16,6 @@
 		<result property="createTime" column="create_time"/>
 		<result property="updateTime" column="update_time"/>
 		<result property="views" column="views"/>
-		<result property="words" column="words"/>
-		<result property="readTime" column="read_time"/>
 		<result property="password" column="password"/>
 		<association property="user" javaType="com.rawchen.entity.User">
 			<id property="id" column="user_id"/>
@@ -104,8 +102,6 @@
 		<result property="description" column="description"/>
 		<result property="createTime" column="create_time"/>
 		<result property="views" column="views"/>
-		<result property="words" column="words"/>
-		<result property="readTime" column="read_time"/>
 		<result property="top" column="is_top"/>
 		<result property="password" column="password"/>
 		<association property="category" javaType="com.rawchen.entity.Category">
@@ -121,8 +117,6 @@
 			   b.is_top,
 			   b.create_time,
 			   b.views,
-			   b.words,
-			   b.read_time,
 			   b.password,
 			   c.category_name
 		from blog as b
@@ -138,8 +132,6 @@
 			   b.is_top,
 			   b.create_time,
 			   b.views,
-			   b.words,
-			   b.read_time,
 			   b.password,
 			   c.category_name
 		from category as c
@@ -156,8 +148,6 @@
 			   b.is_top,
 			   b.create_time,
 			   b.views,
-			   b.words,
-			   b.read_time,
 			   b.password,
 			   c.category_name
 		from (((tag as t left join blog_tag as bt on t.id = bt.tag_id) left join blog as b on bt.blog_id = b.id)
@@ -239,10 +229,10 @@
 	<insert id="saveBlog" parameterType="com.rawchen.model.dto.Blog" useGeneratedKeys="true" keyProperty="id">
 		insert into blog (title, first_picture, content, description, is_published, is_recommend, is_appreciation,
 						  is_comment_enabled,
-						  is_top, create_time, update_time, views, words, read_time, category_id, user_id, password)
+						  is_top, create_time, update_time, views, category_id, user_id, password)
 		values (#{title}, #{firstPicture}, #{content}, #{description}, #{published}, #{recommend}, #{appreciation},
 				#{commentEnabled},
-				#{top}, #{createTime}, #{updateTime}, #{views}, #{words}, #{readTime}, #{category.id}, #{user.id},
+				#{top}, #{createTime}, #{updateTime}, #{views}, #{category.id}, #{user.id},
 				#{password})
 	</insert>
 
@@ -294,8 +284,6 @@
 			   b.create_time,
 			   b.update_time,
 			   b.views,
-			   b.words,
-			   b.read_time,
 			   b.password,
 			   c.id       as category_id,
 			   c.category_name,
@@ -324,8 +312,6 @@
 		<result property="createTime" column="create_time"/>
 		<result property="updateTime" column="update_time"/>
 		<result property="views" column="views"/>
-		<result property="words" column="words"/>
-		<result property="readTime" column="read_time"/>
 		<result property="password" column="password"/>
 		<association property="category" javaType="com.rawchen.entity.Category">
 			<result property="name" column="category_name"/>
@@ -347,8 +333,6 @@
 			   b.create_time,
 			   b.update_time,
 			   b.views,
-			   b.words,
-			   b.read_time,
 			   b.password,
 			   c.category_name,
 			   t.tag_name as tag_name,
@@ -381,8 +365,6 @@
 			create_time=#{createTime},
 			update_time=#{updateTime},
 			views=#{views},
-			words=#{words},
-			read_time=#{readTime},
 			category_id=#{category.id},
 			password=#{password}
 		where id = #{id}
