@@ -140,14 +140,17 @@ JS 依赖及参考的 css：[axios](https://github.com/axios/axios)、[moment](h
 
 
 
+## Stargazers
+
+[![](https://reporoster.com/stars/rawchen/blog)](https://github.com/rawchen/blog/stargazers)
+
+## Forkers
+
+[![](https://reporoster.com/forks/rawchen/blog)](https://github.com/rawchen/blog/network/members)
+
+
 ## 如何贡献
-
-可能上述优化任务因时间问题无法再完成下去。
-因此你可以试试看，如果觉得修改的挺不错可以合并到主分支。
-
-**操作流程**
 
 Fork 项目到你自己仓库，本地拉取你 fork 的项目并部署修改。
 提交本地仓库更改，推送到你 fork 的项目仓库中。
 在我的项目发起 Pull requests，我看到后将考虑合并到主分支。
-
