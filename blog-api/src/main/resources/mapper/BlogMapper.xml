@@ -118,6 +118,7 @@
 			   b.create_time,
 			   b.views,
 			   b.password,
+			   b.first_picture,
 			   c.category_name
 		from blog as b
 				 left join category as c on b.category_id = c.id
