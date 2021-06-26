@@ -6,6 +6,9 @@
 			</div>
 			<div class="ui middle aligned mobile reversed stackable">
 				<div class="ui grid m-margin-lr">
+
+					<span >{{ item.firstPicture }}</span>
+
 					<!--标题-->
 					<div class="row m-padded-tb-small">
 						<h2 class="ui header m-center m-scaleup">

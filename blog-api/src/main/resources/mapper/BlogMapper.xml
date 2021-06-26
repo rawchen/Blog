@@ -104,6 +104,7 @@
 		<result property="views" column="views"/>
 		<result property="top" column="is_top"/>
 		<result property="password" column="password"/>
+		<result property="firstPicture" column="first_picture"/>
 		<association property="category" javaType="com.rawchen.entity.Category">
 			<result property="name" column="category_name"/>
 		</association>

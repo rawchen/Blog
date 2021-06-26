@@ -28,6 +28,7 @@ public class BlogInfo {
 	private Boolean top;//是否置顶
 	private String password;//文章密码
 	private Boolean privacy;//是否私密文章
+	private String firstPicture;//首图
 
 	private Category category;//文章分类
 	private List<Tag> tags = new ArrayList<>();//文章标签
