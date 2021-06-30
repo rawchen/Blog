@@ -13,6 +13,7 @@ import com.rawchen.service.BlogService;
 import com.rawchen.service.CategoryService;
 import com.rawchen.service.CommentService;
 import com.rawchen.service.TagService;
+import com.rawchen.util.PictureUtil;
 import com.rawchen.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -241,6 +242,11 @@ public class BlogAdminController {
 		if (blog.getViews() == null || blog.getViews() < 0) {
 			blog.setViews(0);
 		}
+
+		if (blog.getFirstPicture() == null || "".equals(blog.getFirstPicture())) {
+			blog.setFirstPicture(PictureUtil.randomBlogFirstPicture());
+		}
+
 		if ("save".equals(type)) {
 			blog.setCreateTime(date);
 			blog.setUpdateTime(date);
