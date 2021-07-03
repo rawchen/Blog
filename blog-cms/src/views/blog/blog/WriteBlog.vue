@@ -12,7 +12,7 @@
 				</el-col>
 				<el-col :span="12">
 					<el-form-item label="封面图" prop="firstPicture">
-						<el-input v-model="form.firstPicture" placeholder="文章首图，用于随机文章展示"></el-input>
+						<el-input v-model="form.firstPicture" placeholder="可不填，随机获取"></el-input>
 					</el-form-item>
 				</el-col>
 			</el-row>
@@ -129,7 +129,7 @@
 				},
 				formRules: {
 					title: [{required: true, message: '请输入标题', trigger: 'change'}],
-					firstPicture: [{required: true, message: '请输入首图链接', trigger: 'change'}],
+					//firstPicture: [{required: true, message: '请输入首图链接', trigger: 'change'}],
 					cate: [{required: true, message: '请选择分类', trigger: 'change'}],
 					// tagList: [{required: true, message: '请选择标签', trigger: 'change'}],
 				},
