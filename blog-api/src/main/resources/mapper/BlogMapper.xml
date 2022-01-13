@@ -107,6 +107,7 @@
 		<result property="firstPicture" column="first_picture"/>
 		<association property="category" javaType="com.rawchen.entity.Category">
 			<result property="name" column="category_name"/>
+			<result property="id" column="category_id"/>
 		</association>
 	</resultMap>
 
@@ -120,7 +121,8 @@
 			   b.views,
 			   b.password,
 			   b.first_picture,
-			   c.category_name
+			   c.category_name,
+		       c.id as category_id
 		from blog as b
 				 left join category as c on b.category_id = c.id
 		where b.is_published = true

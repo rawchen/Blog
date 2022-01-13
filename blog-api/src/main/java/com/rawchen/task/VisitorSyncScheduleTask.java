@@ -22,7 +22,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @Description: 访客统计相关定时任务
+ * <p>@Description: 存放访客统计相关定时任务方法的Bean</p>
+ * <p>@Component默认值为该类首字母小写的类名</p>
+ * <p>example：VisitorSyncScheduleTask -> visitorSyncScheduleTask</p>
+ *
  * @Date: 2021-02-05
  */
 @Component

@@ -57,6 +57,7 @@ public class ScheduleJobController {
 		scheduleJob.setStatus(false);
 		scheduleJob.setCreateTime(new Date());
 		ValidatorUtils.validateEntity(scheduleJob);
+		//保存任务配置并以此创建定时任务
 		scheduleJobService.saveJob(scheduleJob);
 		return Result.ok("添加成功");
 	}

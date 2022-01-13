@@ -122,6 +122,7 @@ public class BlogServiceImpl implements BlogService {
 		}
 		//redis没有缓存，从数据库查询，并添加缓存
 		PageHelper.startPage(pageNum, pageSize, orderBy);
+		//处理查询Tag并处理带密码的文章
 		List<BlogInfo> blogInfos = processBlogInfosPassword(blogMapper.getBlogInfoListByIsPublished());
 		PageInfo<BlogInfo> pageInfo = new PageInfo<>(blogInfos);
 		PageResult<BlogInfo> pageResult = new PageResult<>(pageInfo.getPages(), pageInfo.getList());

@@ -1,9 +1,6 @@
 package com.rawchen.model.vo;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import com.rawchen.entity.Category;
 import com.rawchen.entity.Tag;
 

@@ -24,7 +24,7 @@
 
 	<!--按博客id查询List-->
 	<select id="getTagListByBlogId" resultMap="tag">
-		select t.tag_name, t.color
+		select t.id, t.tag_name, t.color
 		from blog_tag as bt
 				 left join tag as t on bt.tag_id = t.id
 		where bt.blog_id = #{blogId}
