@@ -1,15 +1,14 @@
 package com.rawchen.interceptor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.rawchen.annotation.AccessLimit;
 import com.rawchen.model.vo.Result;
 import com.rawchen.service.RedisService;
 import com.rawchen.util.IpAddressUtils;
 import com.rawchen.util.JacksonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,10 +21,9 @@ import java.io.PrintWriter;
  */
 @Component
 public class AccessLimitInterceptor extends HandlerInterceptorAdapter {
+
 	@Autowired
 	RedisService redisService;
-	@Autowired
-	RedisTemplate jsonRedisTemplate;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
