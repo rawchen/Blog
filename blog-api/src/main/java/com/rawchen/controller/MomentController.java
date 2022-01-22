@@ -64,8 +64,8 @@ public class MomentController {
 	 */
 	@AccessLimit(seconds = 86400, maxCount = 1, msg = "不可以重复点赞哦")
 	@VisitLogger(behavior = "点赞动态")
-	@PostMapping("/moment/like")
-	public Result like(@RequestParam Long id) {
+	@PostMapping("/moment/like/{id}")
+	public Result like(@PathVariable Long id) {
 		momentService.addLikeByMomentId(id);
 		return Result.ok("点赞成功");
 	}
