@@ -7,7 +7,9 @@ import com.rawchen.blog.dto.FriendLinkDTO;
 import com.rawchen.blog.entity.FriendLink;
 import com.rawchen.blog.exception.BusinessException;
 import com.rawchen.blog.mapper.FriendLinkMapper;
+import com.rawchen.blog.service.ConfigService;
 import com.rawchen.blog.service.FriendLinkService;
+import com.rawchen.blog.service.MailService;
 import com.rawchen.blog.vo.FriendLinkVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -28,6 +30,12 @@ public class FriendLinkServiceImpl extends ServiceImpl<FriendLinkMapper, FriendL
 
     @Autowired
     private FriendLinkMapper friendLinkMapper;
+
+    @Autowired
+    private MailService mailService;
+
+    @Autowired
+    private ConfigService configService;
 
     @Override
     public List<FriendLinkVO> getFriendLinkList() {
@@ -100,6 +108,21 @@ public class FriendLinkServiceImpl extends ServiceImpl<FriendLinkMapper, FriendL
         friendLinkMapper.insert(friendLink);
         log.info("申请友链成功: {}", friendLink.getSiteName());
 
+        // 通知网站作者有人提交了友链申请
+        try {
+            String mailEnabled = configService.getConfigByKey("mail_enabled", "false");
+            if ("true".equalsIgnoreCase(mailEnabled) || "1".equals(mailEnabled)) {
+                String adminEmail = configService.getConfigByKey("email", "");
+                if (adminEmail != null && !adminEmail.trim().isEmpty()) {
+                    String blogUrl = configService.getConfigByKey("site_url", "https://example.com");
+                    String blogName = configService.getConfigByKey("site_name", "Blog");
+                    mailService.sendFriendPendingMail(friendLink, adminEmail, blogUrl, blogName);
+                }
+            }
+        } catch (Exception e) {
+            log.error("发送友链申请待审核通知邮件失败", e);
+        }
+
         return friendLink.getId();
     }
 
@@ -144,6 +167,21 @@ public class FriendLinkServiceImpl extends ServiceImpl<FriendLinkMapper, FriendL
             friendLink.setStatus(status);
             friendLinkMapper.updateById(friendLink);
             log.info("审核友链成功: id={}, status={}", id, status);
+
+            // 审核通过时，若开启邮件通知且申请者填写了邮箱，则发送通知邮件
+            if (status == 1) {
+                try {
+                    String mailEnabled = configService.getConfigByKey("mail_enabled", "false");
+                    if (("true".equalsIgnoreCase(mailEnabled) || "1".equals(mailEnabled))
+                            && friendLink.getOwnerEmail() != null && !friendLink.getOwnerEmail().trim().isEmpty()) {
+                        String blogUrl = configService.getConfigByKey("site_url", "https://example.com");
+                        String blogName = configService.getConfigByKey("site_name", "Blog");
+                        mailService.sendFriendApprovedMail(friendLink, blogUrl, blogName);
+                    }
+                } catch (Exception e) {
+                    log.error("发送友链审核通过通知邮件失败", e);
+                }
+            }
         } else {
             throw new BusinessException("审核状态无效");
         }

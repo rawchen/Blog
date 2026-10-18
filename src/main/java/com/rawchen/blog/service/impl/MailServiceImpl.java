@@ -4,6 +4,7 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
 import com.rawchen.blog.entity.Article;
 import com.rawchen.blog.entity.Comment;
+import com.rawchen.blog.entity.FriendLink;
 import com.rawchen.blog.entity.User;
 import com.rawchen.blog.mapper.ArticleMapper;
 import com.rawchen.blog.mapper.CommentMapper;
@@ -202,6 +203,82 @@ public class MailServiceImpl implements MailService {
             log.info("回复通知邮件发送成功，收件人: {}", toEmail);
         } catch (Exception e) {
             log.error("发送回复通知邮件失败", e);
+        }
+    }
+
+    @Override
+    @Async
+    public void sendFriendApprovedMail(FriendLink friendLink, String blogUrl, String blogName) {
+        try {
+            // 检查收件人邮箱
+            if (friendLink == null || StrUtil.isBlank(friendLink.getOwnerEmail())) {
+                log.warn("友链申请人邮箱为空，跳过发送友链审核通过通知邮件");
+                return;
+            }
+
+            // 加载模板
+            String template = loadTemplate("templates/mail/friend-approved.html");
+
+            // 站长名称为空时使用网站名称兜底
+            String ownerName = StrUtil.isBlank(friendLink.getOwnerName()) ? friendLink.getSiteName() : friendLink.getOwnerName();
+
+            // 替换模板变量
+            String html = template
+                    .replace("{blogUrl}", blogUrl)
+                    .replace("{blogName}", blogName)
+                    .replace("{ownerName}", ownerName)
+                    .replace("{siteName}", friendLink.getSiteName())
+                    .replace("{siteUrl}", friendLink.getSiteUrl());
+
+            // 发送邮件
+            sendHtmlMail(friendLink.getOwnerEmail(), "您申请的友链已通过审核！", html);
+            log.info("友链审核通过通知邮件发送成功，收件人: {}", friendLink.getOwnerEmail());
+        } catch (Exception e) {
+            log.error("发送友链审核通过通知邮件失败", e);
+        }
+    }
+
+    @Override
+    @Async
+    public void sendFriendPendingMail(FriendLink friendLink, String adminEmail, String blogUrl, String blogName) {
+        try {
+            // 检查收件人邮箱
+            if (StrUtil.isBlank(adminEmail)) {
+                log.warn("网站作者邮箱为空，跳过发送友链申请待审核通知邮件");
+                return;
+            }
+            if (friendLink == null) {
+                log.warn("友链申请为空，跳过发送通知邮件");
+                return;
+            }
+
+            // 加载模板
+            String template = loadTemplate("templates/mail/friend-pending.html");
+
+            // 站长名称为空时使用网站名称兜底
+            String ownerName = StrUtil.isBlank(friendLink.getOwnerName()) ? friendLink.getSiteName() : friendLink.getOwnerName();
+            String description = StrUtil.isBlank(friendLink.getDescription()) ? "（无）" : friendLink.getDescription();
+
+            // 拼接后台审核地址
+            String baseUrl = blogUrl.endsWith("/") ? blogUrl : blogUrl + "/";
+            String adminUrl = baseUrl + "admin/friend";
+
+            // 替换模板变量
+            String html = template
+                    .replace("{blogUrl}", blogUrl)
+                    .replace("{blogName}", blogName)
+                    .replace("{adminUrl}", adminUrl)
+                    .replace("{siteName}", friendLink.getSiteName())
+                    .replace("{siteUrl}", friendLink.getSiteUrl())
+                    .replace("{ownerName}", ownerName)
+                    .replace("{ownerEmail}", StrUtil.isBlank(friendLink.getOwnerEmail()) ? "（无）" : friendLink.getOwnerEmail())
+                    .replace("{description}", description);
+
+            // 发送邮件
+            sendHtmlMail(adminEmail, "您有新的友链申请待审核！", html);
+            log.info("友链申请待审核通知邮件发送成功，收件人: {}", adminEmail);
+        } catch (Exception e) {
+            log.error("发送友链申请待审核通知邮件失败", e);
         }
     }
 
