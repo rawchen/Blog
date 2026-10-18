@@ -255,13 +255,11 @@ public class MailServiceImpl implements MailService {
             // 加载模板
             String template = loadTemplate("templates/mail/friend-pending.html");
 
-            // 站长名称为空时使用网站名称兜底
-            String ownerName = StrUtil.isBlank(friendLink.getOwnerName()) ? friendLink.getSiteName() : friendLink.getOwnerName();
             String description = StrUtil.isBlank(friendLink.getDescription()) ? "（无）" : friendLink.getDescription();
 
             // 拼接后台审核地址
             String baseUrl = blogUrl.endsWith("/") ? blogUrl : blogUrl + "/";
-            String adminUrl = baseUrl + "admin/friend";
+            String adminUrl = baseUrl + "admin/friend-link";
 
             // 替换模板变量
             String html = template
@@ -270,8 +268,6 @@ public class MailServiceImpl implements MailService {
                     .replace("{adminUrl}", adminUrl)
                     .replace("{siteName}", friendLink.getSiteName())
                     .replace("{siteUrl}", friendLink.getSiteUrl())
-                    .replace("{ownerName}", ownerName)
-                    .replace("{ownerEmail}", StrUtil.isBlank(friendLink.getOwnerEmail()) ? "（无）" : friendLink.getOwnerEmail())
                     .replace("{description}", description);
 
             // 发送邮件

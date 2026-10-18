@@ -163,8 +163,24 @@ function FriendLinkList() {
           </Tooltip>
           {record.status === 0 && (
             <>
-              <Button type="primary" size="small" icon={<CheckOutlined />} onClick={() => handleAudit(record.id, 1)}>通过</Button>
-              <Button type="primary" size="small" danger icon={<CloseOutlined />} onClick={() => handleAudit(record.id, 2)}>拒绝</Button>
+              <Button
+                type="primary"
+                size="small"
+                style={{ backgroundColor: '#52c41a', borderColor: '#52c41a' }}
+                icon={<CheckOutlined />}
+                onClick={() => handleAudit(record.id, 1)}
+              >
+                通过
+              </Button>
+              <Button
+                type="primary"
+                size="small"
+                style={{ backgroundColor: '#fa541c', borderColor: '#fa541c' }}
+                icon={<CloseOutlined />}
+                onClick={() => handleAudit(record.id, 2)}
+              >
+                拒绝
+              </Button>
             </>
           )}
           <Button type="primary" size="small" icon={<EditOutlined />} onClick={() => handleEdit(record)}>编辑</Button>
