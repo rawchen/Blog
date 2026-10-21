@@ -9,6 +9,9 @@ import './index.css'
 // Random background colors for icons
 const bgIcos = ['book', 'game', 'note', 'chat', 'code', 'image', 'web', 'link', 'design', 'lock']
 
+// 标签云每批展示的标签数量
+const TAG_PAGE_SIZE = 50
+
 function getRandomBgIco() {
   return bgIcos[Math.floor(Math.random() * bgIcos.length)]
 }
@@ -20,6 +23,11 @@ function TagPage() {
   const [currentTag, setCurrentTag] = useState(null)
   const [loading, setLoading] = useState(true)
   const [total, setTotal] = useState(0)
+  const [visibleCount, setVisibleCount] = useState(TAG_PAGE_SIZE)
+
+  // 标签云按文章数量倒序展示，默认只展示前 TAG_PAGE_SIZE 个
+  const visibleTags = tags.slice(0, visibleCount)
+  const hasMoreTags = visibleCount < tags.length
 
   useEffect(() => {
     fetchTags()
@@ -76,7 +84,7 @@ function TagPage() {
         >
           全部标签
         </Link>
-        {tags.map((tag, index) => (
+        {visibleTags.map((tag, index) => (
           <Link
             key={tag.id}
             to={`/tag/${tag.id}`}
@@ -85,6 +93,15 @@ function TagPage() {
             {tag.tagName} ({tag.articleCount || 0})
           </Link>
         ))}
+        {hasMoreTags && (
+          <button
+            type="button"
+            className="tag-cloud-more"
+            onClick={() => setVisibleCount(count => count + TAG_PAGE_SIZE)}
+          >
+            显示更多标签 ({visibleTags.length}/{tags.length})
+          </button>
+        )}
       </div>
 
       {/* Article List */}

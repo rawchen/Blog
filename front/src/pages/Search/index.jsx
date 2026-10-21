@@ -10,6 +10,9 @@ import './index.css'
 const bgColors = ['bg-blue', 'bg-orange', 'bg-green', 'bg-yellow', 'bg-purple', 'bg-red']
 const getBgColor = (index) => bgColors[index % bgColors.length]
 
+// 标签云每批展示的标签数量
+const TAG_PAGE_SIZE = 50
+
 function SearchPage({ pageContent }) {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
@@ -20,6 +23,11 @@ function SearchPage({ pageContent }) {
   const [tags, setTags] = useState([])
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(TAG_PAGE_SIZE)
+
+  // 标签云按文章数量倒序展示，默认只展示前 TAG_PAGE_SIZE 个
+  const visibleTags = tags.slice(0, visibleCount)
+  const hasMoreTags = visibleCount < tags.length
 
   useEffect(() => {
     fetchTags()
@@ -168,7 +176,7 @@ function SearchPage({ pageContent }) {
       <div className="tag-cloud-section">
         {/*<h3>热门标签</h3>*/}
         <div className="tag-cloud">
-          {tags.map((tag, index) => (
+          {visibleTags.map((tag, index) => (
             <Link
               key={tag.id}
               to={`/tag/${tag.id}`}
@@ -178,6 +186,15 @@ function SearchPage({ pageContent }) {
               {tag.tagName} ({tag.articleCount || 0})
             </Link>
           ))}
+          {hasMoreTags && (
+            <button
+              type="button"
+              className="tag-cloud-more"
+              onClick={() => setVisibleCount(count => count + TAG_PAGE_SIZE)}
+            >
+              显示更多标签 ({visibleTags.length}/{tags.length})
+            </button>
+          )}
         </div>
       </div>
     </div>

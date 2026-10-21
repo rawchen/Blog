@@ -215,6 +215,27 @@
   border-radius: 50%;
 }
 
+/* 显示更多标签 */
+.tag-cloud-more {
+  padding: 0 15px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #5f5f5f;
+  background: transparent;
+  border: 1px dashed #c5c9d1;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.tag-cloud-more:hover {
+  color: #eb5055;
+  border-color: #eb5055;
+  background: rgba(235, 80, 85, 0.06);
+}
+
 /* Post Lists */
 .post-lists {
   position: relative;
