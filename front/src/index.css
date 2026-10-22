@@ -198,6 +198,9 @@ blockquote, dl, ol, p, pre, ul {
 .fa-paper-plane::before {
   background-image: url(/icons/fa-paper-plane.svg);
 }
+.fa-clock-o::before {
+  background-image: url(/icons/fa-clock-o.svg);
+}
 
 #githubChart {
   cursor: pointer;
