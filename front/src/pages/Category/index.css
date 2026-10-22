@@ -89,11 +89,6 @@
   font-size: 12px;
 }
 
-.category-page .post-list-item-container .item-label .item-meta .item-meta-date .fa {
-  margin-right: 5px;
-  vertical-align: -0.125em;
-}
-
 /* Category Header */
 .category-header {
   border-bottom: 1px solid rgb(241 241 241);

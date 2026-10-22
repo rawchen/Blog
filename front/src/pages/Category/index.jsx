@@ -105,7 +105,6 @@ function CategoryPage() {
                       </div>
                       <div className="item-meta clearfix">
                         <div className="item-meta-date">
-                          <i className="fa fa-clock-o" aria-hidden="true"></i>
                           {article.publishTime || article.createTime}
                         </div>
                       </div>
