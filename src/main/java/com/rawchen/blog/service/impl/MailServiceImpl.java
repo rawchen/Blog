@@ -259,7 +259,7 @@ public class MailServiceImpl implements MailService {
 
             // 拼接后台审核地址
             String baseUrl = blogUrl.endsWith("/") ? blogUrl : blogUrl + "/";
-            String adminUrl = baseUrl + "admin/friend-link";
+            String adminUrl = baseUrl + "admin/friend";
 
             // 替换模板变量
             String html = template

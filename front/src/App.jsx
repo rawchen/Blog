@@ -174,7 +174,7 @@ function App() {
         <Route path="category" element={<CategoryList />} />
         <Route path="tag" element={<TagList />} />
         <Route path="comment" element={<CommentList />} />
-        <Route path="friend-link" element={<FriendLinkList />} />
+        <Route path="friend" element={<FriendLinkList />} />
         <Route path="schedule" element={<ScheduleJob />} />
         <Route path="user" element={<UserList />} />
         <Route path="setting" element={<Setting />} />
